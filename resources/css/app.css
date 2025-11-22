@@ -1,0 +1,5 @@
+#tabel-mesin th, 
+#tabel-mesin td {
+    text-align: center;
+    vertical-align: middle; /* biar rata tengah atas-bawah juga */
+}
