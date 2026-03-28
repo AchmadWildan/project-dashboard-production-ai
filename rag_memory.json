@@ -1,0 +1,332 @@
+[
+  {
+    "question": "sebutkan 5 kode item",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd1 LIMIT 5",
+    "summary": "Data menampilkan beberapa kode item yang mungkin terkait dengan produk masakan atau bumbu, seperti POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, POUCH KUNYIT 250, POUCH BAWANG PUTIH. \nKesimpulan ringkas, kode item yang ada berhubungan dengan produk bumbu masakan dalam kemasan pouch."
+  },
+  {
+    "question": "sebutkan 5 kode item dengan ksi paling tertinggi",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd1 ORDER BY Berat DESC LIMIT 5",
+    "summary": "Berdasarkan data yang tersedia, tidak ada informasi tentang nilai KSI dari masing-masing kode item. Namun, karena pertanyaan meminta 5 kode item dengan KSI paling tertinggi, kita dapat menyimpulkan bahwa tidak ada data yang cukup untuk memberikan jawaban yang akurat tentang peringkat KSI. \nKesimpulan ringkas, tidak ada informasi KSI pada data yang diberikan sehingga tidak dapat menentukan kode item mana yang memiliki KSI paling tertinggi."
+  },
+  {
+    "question": "sebutkan 5 kode item dengan produksi paling banyak",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd1 ORDER BY Berat DESC LIMIT 5",
+    "summary": "Berikut adalah ringkasan dari hasil query, kode item dengan produksi paling banyak adalah POUCH KUNYIT 250, POUCH CABE 250, POUCH MARINASI 250, POUCH KETUMBAR 250, dan POUCH BAWANG PUTIH 250. \nKesimpulan ringkas adalah bahwa kode item tersebut memiliki produksi yang sama yaitu 250."
+  },
+  {
+    "question": "Sebutkan 2 kode item dengan produksi paling banyak pada satu tanggal",
+    "sql": "SELECT kode_item FROM kartoning_wd1 WHERE tgl_shift = (SELECT tgl_shift FROM kartoning_wd1 GROUP BY tgl_shift ORDER BY SUM(Berat) DESC LIMIT 1) GROUP BY kode_item ORDER BY SUM(Berat) DESC LIMIT 2",
+    "summary": "Berikut adalah ringkasan dari hasil query. Pada satu tanggal tertentu, dua kode item dengan produksi paling banyak adalah POUCH CABE, tetapi karena data tidak lengkap, hanya satu kode item yang dapat disebutkan yaitu POUCH CABE. Kesimpulan ringkas, kode item POUCH CABE memiliki produksi paling banyak pada satu tanggal tetapi kode item kedua tidak dapat ditentukan karena data yang tidak lengkap."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd1 LIMIT 200",
+    "summary": "Hasil query menunjukkan bahwa terdapat beberapa kode item yang berbeda, di antaranya POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, POUCH KUNYIT 250, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, DISPLAY POUCH KETUMBAR, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, POUCH MARINASI 250, POUCH KUNYIT, POUCH BAWANG PUTIH 250. \nKesimpulan ringkas, kode item yang ada beragam dan mencakup berbagai varian produk dengan ukuran yang berbeda-beda."
+  },
+  {
+    "question": "berapa jumlah semua produksi pada setiap kode item? sebutkan angkanya",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi FROM kartoning_wd1 GROUP BY kode_item LIMIT 200",
+    "summary": "jumlah produksi untuk setiap kode item bervariasi, mulai dari yang terendah sekitar 6728412 untuk DISPLAY POUCH BAWANG PUTIH hingga yang tertinggi sekitar 31701841 untuk POUCH MARINASI. kesimpulan ringkasnya adalah jumlah produksi bervariasi untuk setiap kode item dengan total produksi tertinggi sekitar 31701841 untuk POUCH MARINASI"
+  },
+  {
+    "question": "urutkan dari yang paling banyak",
+    "sql": "SELECT kode_item, SUM(Berat) AS Total_Produksi FROM kartoning_wd1 GROUP BY kode_item ORDER BY Total_Produksi DESC LIMIT 200",
+    "summary": "Produksi POUCH MARINASI memiliki jumlah produksi terbanyak dengan total produksi sebesar 31701841. Diikuti oleh POUCH KETUMBAR dan POUCH BAWANG PUTIH dengan total produksi masing-masing sebesar 21404813 dan 17318982. Kesimpulan ringkas, produksi POUCH MARINASI merupakan produksi dengan jumlah terbanyak."
+  },
+  {
+    "question": "Sebutkan 5 kode item dengan jumlah produksi terbanyak! sebutkan angkanya",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi FROM kartoning_wd1 GROUP BY kode_item ORDER BY total_produksi DESC LIMIT 5",
+    "summary": "Kode item dengan jumlah produksi terbanyak adalah POUCH MARINASI dengan total produksi 31701841, diikuti oleh POUCH KETUMBAR dengan total produksi 21404813, POUCH BAWANG PUTIH dengan total produksi 17318982, POUCH CABE dengan total produksi 15551760, dan DISPLAY POUCH MARINASI dengan total produksi 13760695. Kesimpulan ringkas adalah POUCH MARINASI merupakan kode item dengan jumlah produksi terbanyak yaitu sebesar 31701841."
+  },
+  {
+    "question": "Sebutkan 5 kode item dengan jumlah produksi terbanyak! sebutkan angkanya",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Item dengan produksi tertinggi adalah POUCH MARINASI dengan total produksi 31.701.841, diikuti oleh POUCH KETUMBAR dengan 21.404.813, POUCH BAWANG PUTIH dengan 17.318.982, POUCH CABE dengan 15.551.760, dan DISPLAY POUCH MARINASI dengan 13.760.695. Kesimpulannya, POUCH MARINASI mendominasi produksi, menghasilkan jumlah paling besar di antara lima item teratas."
+  },
+  {
+    "question": "gunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Dari data terdapat 5 jenis item. Total produksi seluruh item berjumlah 40.973 unit, dengan rata‑rata sekitar 8.195 unit per item. Item dengan produksi tertinggi adalah **POUCH MARINASI** (13.026 unit), sedangkan yang terendah adalah **DISPLAY POUCH MARINASI** (5.631 unit). Kesimpulannya, produksi didominasi oleh POUCH MARINASI, namun variasi produksi antar item cukup signifikan."
+  },
+  {
+    "question": "Sebutkan 5 kode item dengan jumlah produksi terbanyak!",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "gunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "pada tanggal berapa pouch marinasi paling banyak di produksi?",
+    "sql": "SELECT tgl_shift\nFROM kartoning_wd1\nWHERE kode_item = 'pouch marinasi'\nGROUP BY tgl_shift\nORDER BY COUNT(*) DESC\nLIMIT 1",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "sebutkan angkanya",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM kartoning_wd1\nWHERE kode_item = 'pouch marinasi'\nGROUP BY tgl_shift\nORDER BY total_berat DESC\nLIMIT 1",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "Sebutkan 5 kode item dengan jumlah produksi terbanyak! sebutkan angkanya",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Berdasarkan data produksi, lima kode item dengan total produksi tertinggi adalah:\n\n1. POUCH MARINASI dengan produksi sebesar 31.701.841\n2. POUCH KETUMBAR dengan produksi sebesar 21.404.813\n3. POUCH BAWANG PUTIH dengan produksi sebesar 17.318.982\n4. POUCH CABE dengan produksi sebesar 15.551.760\n5. DISPLAY POUCH MARINASI dengan produksi sebesar 13.760.695\n\nInsight utama menunjukkan bahwa produk POUCH MARINASI mendominasi produksi dengan selisih yang signifikan dibandingkan item berikutnya, menandakan permintaan atau kapasitas produksi yang paling tinggi untuk jenis ini. Kesimpulan: POUCH MARINASI adalah kode item dengan jumlah produksi terbanyak, diikuti oleh POUCH KETUMBAR, POUCH BAWANG PUTIH, POUCH CABE, dan DISPLAY POUCH MARINASI."
+  },
+  {
+    "question": "gunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC\nLIMIT 5",
+    "summary": "Dari data produksi terdapat lima kode item berbeda dengan total keseluruhan 40 973 unit. POUCH MARINASI menjadi kontributor terbesar dengan 13 026 unit, menyumbang sekitar 31,8 % dari total produksi. Di urutan berikutnya, POUCH KETUMBAR menghasilkan 8 802 unit (≈21,5 %), diikuti oleh POUCH BAWANG PUTIH 7 134 unit (≈17,4 %), POUCH CABE 6 380 unit (≈15,6 %), dan DISPLAY POUCH MARINASI 5 631 unit (≈13,7 %). Secara keseluruhan, produksi terpusat pada POUCH MARINASI, menandakan fokus utama produksi berada pada jenis produk tersebut."
+  },
+  {
+    "question": "pada tanggal berapa produk pouch ketumbar paling banyak di produksi? sebutkan produk, total produk, shift, dan tanggal shift",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produk, shift, tgl_shift\nFROM kartoning_wd1\nWHERE kode_item = 'pouch ketumbar'\nGROUP BY kode_item, shift, tgl_shift\nORDER BY total_produk DESC\nLIMIT 1",
+    "summary": "Maaf, saya tidak dapat menjawab pertanyaan tersebut karena data yang diberikan tidak berasal dari tabel yang diizinkan (kartoning_wd1). Tanpa akses ke data yang relevan dalam tabel tersebut, saya tidak dapat menghasilkan ringkasan atau insight yang diminta."
+  },
+  {
+    "question": "sebutkan kode item dengan total produksi paling sedikit",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi ASC\nLIMIT 1",
+    "summary": "Maaf, saya tidak dapat menentukan kode item dengan total produksi paling sedikit karena saya tidak memiliki data aktual dari tabel **kartoning_wd1**. Jika Anda dapat menyediakan isi tabel tersebut (misalnya dalam format CSV), saya dapat menghitungnya dan memberikan ringkasan yang diminta."
+  },
+  {
+    "question": "gunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produksi\nFROM kartoning_wd1\nGROUP BY kode_item\nORDER BY total_produksi DESC LIMIT 200",
+    "summary": "Maaf, saya tidak dapat menjawab pertanyaan tersebut karena data yang diberikan tidak berasal dari tabel yang diizinkan."
+  },
+  {
+    "question": "Sebutkan total unit produksi lada banded",
+    "sql": "SELECT COUNT(*) AS total_unit\nFROM kartoning_wd1\nWHERE kode_item = 'lada banded' LIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "sebutkan total produksi kode item kunyit",
+    "sql": "SELECT kode_item, SUM(Berat) AS total_produksi\nFROM kartoning_wd1\nWHERE kode_item = 'kunyit'\nGROUP BY kode_item LIMIT 200",
+    "summary": "Tidak ada data yang bisa diringkas."
+  },
+  {
+    "question": "Sebutkan kode item apa saja yang ada pada database?",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd LIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "sebutkan kode item apa saja yang ada pada database?",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd LIMIT 200",
+    "summary": "Kode item yang terdapat di database antara lain LADA, LADA_B, LADA_A, LADA_B (trouble), KUNYIT, LADA BANDED. Kesimpulannya, terdapat enam kode item unik dalam data tersebut."
+  },
+  {
+    "question": "sebutkan kode item apa saja yang ada di dalam database ini!",
+    "sql": "SELECT DISTINCT kode_item FROM kartoning_wd LIMIT 200",
+    "summary": "Database berisi tujuh entri kode item, yaitu: LADA, LADA_B, LADA_A, LADA_B (trouble), KUNYIT, (kosong), dan LADA BANDED. Kesimpulannya, semua kode tersebut tercatat di dalam tabel."
+  },
+  {
+    "question": "sebutkan kode item apa saja yang ada di dalam database ini! tampilkan semua baris",
+    "sql": "SELECT * FROM kartoning_wd LIMIT 200",
+    "summary": "Dari seluruh data yang diberikan, terdapat dua kode item yang muncul, yaitu **LADA** dan **LADA_B**. Semua baris dalam tabel hanya menggunakan salah satu dari kedua kode tersebut, tanpa ada kode item lain. Kesimpulannya, basis data ini hanya mencakup dua jenis kode item."
+  },
+  {
+    "question": "sebutkan kode item yang tersedia",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg LIMIT 200",
+    "summary": "Data menampilkan sekitar 48 kode item, mayoritas merupakan nama bumbu (seperti LADA, KUNYIT, BALADO, KARI, CABE, OPOR, GULAI, etc.) dengan variasi tambahan berupa kata “DISPLAY”, “POUCH”, “LV 1/2”, “PREMIUM”, serta beberapa varian khusus (misalnya LADA_B (trouble), LADA BANDED, KUNYIT SIGLE ROLL). Terdapat satu baris kosong dan satu duplikat LADA_B (dengan catatan trouble). Secara keseluruhan, kode item yang tersedia meliputi: LADA, LADA_B, LADA_A, LADA_B (trouble), KUNYIT, LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM.  \n\nKesimpulan: Semua kode item di atas (kecuali nilai kosong) tersedia untuk dipilih."
+  },
+  {
+    "question": "sebutkan kode item yang tersedia",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Berikut adalah daftar kode item yang tersedia dalam dataset: LADA, LADA_B, LADA_A, KUNYIT, (kosong), LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250. Kesimpulannya, terdapat 48 kode item (termasuk satu entri kosong) yang mencakup berbagai varian bumbu, balado, kemasan pouch, dan display."
+  },
+  {
+    "question": "tampilkan dalam bentuk tabel",
+    "sql": "SELECT kode_item FROM p1_output_fg\nUNION\nSELECT kode_item FROM p2_output_fg LIMIT 200",
+    "summary": "Dataset berisi total 50 entri kode_item. Dari jumlah tersebut, 21 merupakan varian produk utama (tanpa keterangan kemasan), 18 berawalan atau mengandung kata “DISPLAY” yang menunjukkan tipe kemasan display, dan 8 mengandung kata “POUCH” sebagai tipe kemasan pouch. Terdapat juga beberapa duplikasi penulisan seperti “KUNYIT SIGLE ROLL” vs “KUNYIT SINGLE ROLL” yang mengindikasikan inkonsistensi penamaan. Secara keseluruhan, data menunjukkan fokus pada variasi kemasan produk rempah, dengan proporsi kemasan display lebih tinggi dibanding pouch. Kesimpulan: Portofolio produk banyak diperkaya lewat variasi kemasan, terutama display, sekaligus memerlukan standardisasi penamaan untuk menghindari duplikasi.\n\nTabel data:\nkode_item\nLADA\nLADA_B\nLADA_A\nKUNYIT\n\nLADA BANDED\nKETUMBAR\nBALADO\nBALADO DISPLAY\nSAMBAL GORENG DISPLAY\nGULAI DISPLAY\nKARI DISPLAY\nOPOR DISPLAY\nMARINASI\nSAMBAL GORENG\nLODEH\nCABE\nKARI\nDISPLAY KETUMBAR\nOPOR\nGULAI\nDISPLAY OPOR\nDISPLAY KARI\nBALADO LV 2\nSEASONING\nBAWANG PUTIH\nDISPLAY SAMBAL GORENG\nDISPLAY KUNYIT\nBALADO LV 1\nDISPLAY BALADO\nTRIAL\nPOUCH MARINASI\nPOUCH KETUMBAR\nPOUCH KETUMBAR 250\nKEMASAN BAWANG PUTIH\nPOUCH KUNYIT 250\nDISPLAY GULAI\nPOUCH BAWANG PUTIH\nPOUCH CABE\nPOUCH CABE 250\nBALADO PREMIUM\nDISPLAY POUCH KETUMBAR\nKUNYIT SIGLE ROLL\nDISPLAY POUCH KUNYIT\nDISPLAY POUCH MARINASI\nKUNYIT SINGLE ROLL\nDISPLAY POUCH BAWANG PUTIH\nDISPLAY POUCH CABE\nDISPLAY BALADO PREMIUM\nPOUCH MARINASI 250"
+  },
+  {
+    "question": "berapa perbandingan produksi antara kunyit dan ketumbar pada tahun 2025 saja? bandingkan jumlah produksi menggunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_produksi\nFROM (\n    SELECT kode_item, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT', 'KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item LIMIT 200",
+    "summary": "Berdasarkan data yang tersedia, pada tahun 2025 terdapat satu catatan produksi untuk masing‑masing item, sehingga jumlah baris (count) untuk KUNYIT dan KETUMBAR masing‑masing adalah 1. Namun, nilai total produksi menunjukkan KUNYIT menghasilkan 1.632 unit, jauh lebih tinggi dibandingkan KETUMBAR yang menghasilkan 858 unit. Dengan kata lain, meskipun jumlah catatan (count) sama, produksi KUNYIT hampir dua kali lipat produksi KETUMBAR. Kesimpulan: produksi KUNYIT dominan dibandingkan KETUMBAR pada tahun 2025."
+  },
+  {
+    "question": "berapa perbandingan produksi antara kunyit dan ketumbar pada tahun 2025 saja? bandingkan jumlah produksi menggunakan kolom idkarton pada setiap shift dan tanggal",
+    "sql": "SELECT \n    kode_item,\n    shift,\n    DATE(tgl_shift) AS tanggal,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, shift, tgl_shift, idkarton FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, shift, tgl_shift, idkarton FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT','KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item, shift, DATE(tgl_shift)\nORDER BY kode_item, shift, DATE(tgl_shift) LIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "menurut kolom id_karton, berapa perbandingan produksi antara kunyit dan ketumbar pada tahun 2025 saja?",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT', 'KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "menurut kolom idkarton, berapa perbandingan produksi antara kunyit dan ketumbar pada tahun 2025 saja?",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT', 'KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "berapa perbandingan produksi antara kunyit dan ketumbar pada tahun 2025?",
+    "sql": "SELECT \n    kode_item,\n    COUNT(*) AS total_produksi\nFROM (\n    SELECT kode_item, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT', 'KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nLIMIT 200",
+    "summary": "Produksi kunyit mencapai 1.632 ton, sedangkan ketumbar 858 ton. Dengan membandingkan keduanya, produksi kunyit hampir dua kali lipat produksi ketumbar, yaitu sekitar 1,9 kali lebih tinggi. Kesimpulannya, pada tahun 2025 kunyit menunjukkan produksi yang jauh lebih besar dibandingkan ketumbar."
+  },
+  {
+    "question": "berapa perbandingan jumlah karton produksi antara kunyit dan ketumbar pada tahun 2025 saja?",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT','KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "berapa perbandingan jumlah idkarton antara kode item kunyit dan ketumbar pada tahun 2025 saja?",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT','KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "berapa perbandingan jumlah idkarton antara kode item kunyit dan ketumbar pada tahun 2025? bandingkan berdasarkan julmah karton",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_idkarton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('KUNYIT', 'KETUMBAR')\n  AND YEAR(tgl_shift) = 2025\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Data menunjukkan bahwa pada tahun 2025 kode item KUNYIT memiliki total idkarton sebesar 1.632, sedangkan KETUMBAR hanya 858. Dengan membandingkan kedua nilai tersebut, KUNYIT menghasilkan sekitar 1,9 kali lebih banyak karton dibandingkan KETUMBAR (1632 ÷ 858 ≈ 1,90). Kesimpulannya, KUNYIT secara signifikan lebih tinggi dalam jumlah karton dibandingkan KETUMBAR pada tahun 2025."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Dari data yang diberikan terdapat total 50 baris, namun satu baris kosong (\"\"), sehingga ada 49 kode item yang valid. Kode‑kode tersebut mencakup berbagai kategori produk, antara lain:\n\n- Produk dasar tanpa penanda khusus seperti **LADA**, **KUNYIT**, **KETUMBAR**, **BALADO**, **SAMBAL GORENG**, **GULAI**, **KARI**, **OPOR**, **MARINASI**, **CABE**, **LODEH**, **SEASONING**, **BAWANG PUTIH**, **TRIAL**.\n- Versi yang ditandai **DISPLAY** (misalnya **BALADO DISPLAY**, **DISPLAY KUNYIT**, **DISPLAY GULAI**) menunjukkan kemasan atau penempatan khusus di rak.\n- Versi yang ditandai **POUCH** (misalnya **POUCH MARINASI**, **POUCH KETUMBAR 250**, **POUCH BAWANG PUTIH**) menunjukkan produk dalam kemasan pouch, dengan variasi ukuran atau varian.\n- Beberapa item memiliki variasi level atau ukuran seperti **BALADO LV 1**, **BALADO LV 2**, serta varian premium seperti **BALADO PREMIUM**, **DISPLAY BALADO PREMIUM**.\n- Ada juga varian khusus roll untuk KUNYIT (**KUNYIT SIGLE ROLL**, **KUNYIT SINGLE ROLL**) dan kombinasi display‑pouch (misalnya **DISPLAY POUCH KETUMBAR**, **DISPLAY POUCH BAWANG PUTIH**).\n\nKesimpulan: Dataset memuat 49 kode item yang beragam, terbagi antara produk standar, varian display, dan varian pouch, mencerminkan variasi kemasan dan ukuran yang cukup lengkap untuk lini produk bumbu tersebut."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Data berisi total 50 baris, dengan satu baris kosong sehingga terdapat 49 kode item unik. Kode‑kode tersebut antara lain: LADA, LADA_B, LADA_A, KUNYIT, LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250. Kesimpulannya, daftar kode item mencakup beragam varian produk bumbu serta kemasan display dan pouch."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Berikut semua kode item yang terdapat dalam data: LADA, LADA_B, LADA_A, KUNYIT, (kosong), LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250. Kesimpulannya, terdapat total 50 kode item dengan variasi produk bumbu dan kemasan, termasuk satu entri kosong."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Dataset berisi 50 baris kode item, termasuk satu baris kosong. Kode‑kode tersebut meliputi variasi sederhana (misalnya LADA, KUNYIT, KARI), varian dengan label “DISPLAY” (seperti BALADO DISPLAY, DISPLAY GULAI), varian “POUCH” (misalnya POUCH MARINASI, POUCH KETUMBAR 250) serta beberapa versi khusus (BALADO LV 1, BALADO LV 2, BALADO PREMIUM). Secara keseluruhan terdapat 49 kode unik bila baris kosong diabaikan. Kesimpulan: kumpulan kode mencerminkan produk bumbu dalam tiga kategori utama – standar, tampilan (display) dan kemasan pouch – dengan total hampir lima puluh variasi."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Berikut adalah semua kode item yang terdaftar: LADA, LADA_B, LADA_A, KUNYIT, (kosong), LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250.  \n\nInsight utama: terdapat 50 entri kode item, mencakup variasi produk standar, display, dan pouch, serta satu entri kosong. Kesimpulan: daftar kode item cukup beragam dengan fokus pada varian rasa dan kemasan, menunjukkan rentang produk yang luas."
+  },
+  {
+    "question": "sebutkan kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg LIMIT 200",
+    "summary": "Dataset berisi enam entri kode item, yaitu LADA, LADA_B, LADA_A, KUNYIT, sebuah nilai kosong, dan LADA BANDED. Kesimpulannya, terdapat lima kode item yang teridentifikasi serta satu baris tanpa kode."
+  },
+  {
+    "question": "sebutkan kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg LIMIT 200",
+    "summary": "Data berisi 50 entri kode item, termasuk satu baris kosong, yang mencerminkan variasi produk bumbu dan penyajiannya. Mayoritas kode mengacu pada jenis bumbu seperti LADA, KUNYIT, BALADO, KETUMBAR, KARI, OPOR, GULAI, serta varian display dan pouch (misalnya “DISPLAY BALADO”, “POUCH KETUMBAR 250”). Terdapat pula kode dengan penanda kualitas atau ukuran seperti “BALADO LV 1”, “BALADO LV 2”, serta varian premium dan trial. Penekanan pada kemasan display dan pouch menunjukkan fokus pada strategi pemasaran visual dan kemudahan distribusi. Kesimpulannya, daftar kode item ini menunjukkan rangkaian produk bumbu yang luas dengan banyak variasi kemasan dan penempatan di toko. Kode item yang tercantum: LADA, LADA_B, LADA_A, KUNYIT, (kosong), LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250."
+  },
+  {
+    "question": "sebutkan kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg LIMIT 200",
+    "summary": "Dari daftar kode_item yang diberikan terdapat hampir 50 entri, dengan satu baris kosong. Sebagian besar kode mengacu pada varian bumbu seperti LADA, LADA_B, LADA_A, KUNYIT, KETUMBAR, BALADO, SAMBAL GORENG, GULAI, KARI, OPOR, MARINASI, serta varian tingkat atau ukuran (misalnya BALADO LV 1, BALADO LV 2). Selain itu banyak kode mencakup format tampilan atau kemasan, terlihat dari awalan “DISPLAY” (misalnya DISPLAY BALADO, DISPLAY GULAI) dan “POUCH” (misalnya POUCH MARINASI, POUCH KETUMBAR 250). Ada juga kombinasi antara bumbu dan tipe kemasan seperti DISPLAY POUCH KUNYIT atau DISPLAY POUCH BAWANG PUTIH. Secara keseluruhan, daftar ini mencerminkan rangkaian produk bumbu yang luas dengan berbagai varian rasa dan pilihan kemasan, menunjukkan keberagaman penawaran produk. Kesimpulannya, katalog item berfokus pada bumbu tradisional dengan penekanan pada variasi kemasan display dan pouch."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Dari data kode_item yang diberikan terdapat 50 baris, namun satu baris kosong (\"\"), sehingga ada 49 kode item yang terisi. Semua kode item bersifat unik; tidak ada duplikat yang persis sama. Kode-kode tersebut mencakup variasi produk seperti bumbu (LADA, KUNYIT, KETUMBAR, BALADO, KARI, OPOR, GULAI, SAMBAL GORENG, CABE, LODEH, SEASONING, BAWANG PUTIH, MARINASI), varian display (misalnya BALADO DISPLAY, DISPLAY KETUMBAR, DISPLAY GULAI), serta kemasan pouch dengan berbagai ukuran (misalnya POUCH KETUMBAR 250, POUCH KUNYIT 250, POUCH MARINASI 250). Beberapa kode menunjukkan versi khusus atau level produk, seperti BALADO LV 1, BALADO LV 2, serta varian premium (BALADO PREMIUM, DISPLAY BALADO PREMIUM). Ada juga kode yang mengandung typo atau variasi penulisan (misalnya KUNYIT SIGLE ROLL vs KUNYIT SINGLE ROLL).  \n\nKesimpulan: Daftar mencakup 49 kode item beragam, meliputi produk bumbu utama, versi display, dan kemasan pouch, menunjukkan variasi yang cukup luas dalam penamaan produk."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Dataset kode_item berisi 49 kode unik (selain satu baris kosong) yang mencakup berbagai varian bumbu dan condiment, seperti LADA, KUNYIT, KETUMBAR, serta variasi penampilannya seperti “DISPLAY”, “POUCH”, dan level kualitas seperti “LV 1” dan “LV 2”. Terdapat pula produk khusus seperti “BALADO PREMIUM”, “SEASONING”, dan “TRIAL”. Sebagian besar kode mengindikasikan kemasan atau format penjualan (misalnya DISPLAY GULAI, POUCH KUNYIT 250). Kesimpulan: koleksi kode item menunjukkan ragam produk bumbu dengan banyak format tampilan dan kemasan, total ada 49 kode item yang dapat diidentifikasi."
+  },
+  {
+    "question": "sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg UNION SELECT DISTINCT kode_item FROM p2_output_fg LIMIT 200",
+    "summary": "Dari data yang diberikan terdapat total 49 kode item yang unik, ditambah satu baris kosong. Kode‑item mencakup berbagai varian bumbu (misalnya LADA, KUNYIT, KETUMBAR, BALADO, SAMBAL GORENG, GULAI, KARI, OPOR) serta banyak tipe kemasan dan display (misalnya DISPLAY BALADO, POUCH KUNYIT 250, DISPLAY POUCH KETUMBAR, BALADO LV 1, BALADO LV 2, BALADO PREMIUM, serta variasi “DISPLAY” dan “POUCH” untuk hampir semua bumbu). Keberagaman ini menunjukkan fokus pada produk bumbu dengan banyak pilihan tampilan dan kemasan.\n\nKesimpulan: terdapat 49 kode item berbeda (plus satu entri kosong) yang mencerminkan variasi luas produk bumbu serta format kemasan/displaynya."
+  },
+  {
+    "question": "berapa total produksi ketumbar?",
+    "sql": "SELECT SUM(Berat) AS total_produksi_ketumbar\nFROM (\n    SELECT Berat, kode_item FROM p1_output_fg\n    UNION ALL\n    SELECT Berat, kode_item FROM p2_output_fg\n) AS combined\nWHERE kode_item LIKE '%ketumbar%' LIMIT 200",
+    "summary": "Total produksi ketumbar tercatat sebesar 11.949.111,28 (unit tidak disebutkan). Kesimpulannya, produksi ketumbar mencapai hampir 12 juta unit."
+  },
+  {
+    "question": "gunakan count",
+    "sql": "SELECT kode_item, COUNT(*) AS total_count\nFROM (\n    SELECT kode_item FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item FROM p2_output_fg\n) AS combined\nGROUP BY kode_item\nORDER BY total_count DESC LIMIT 200",
+    "summary": "Ringkasan singkat: Total keseluruhan semua kode item adalah sekitar 17.835. Lima item teratas – KUNYIT (3.985), KETUMBAR (2.972), MARINASI (2.780), LADA_B (2.372), dan LADA_A (2.288) – menyumbang lebih dari 60 % dari total (sekitar 11.400). Setelah itu, jumlahnya turun drastis, dengan kode‑item kemasan atau display masing‑masing hanya berjumlah di bawah 500, banyak di antaranya di bawah 100. Insight utama menunjukkan konsentrasi penjualan yang sangat tinggi pada lima produk utama, sementara varian kemasan dan display memberikan kontribusi relatif kecil. Kesimpulan: fokus pada peningkatan atau diversifikasi produk utama dapat memberikan dampak terbesar pada total count."
+  },
+  {
+    "question": "sebutkan jumlah kartonnya",
+    "sql": "SELECT COUNT(DISTINCT idkarton) AS total_karton\nFROM (\n    SELECT idkarton FROM p1_output_fg\n    UNION\n    SELECT idkarton FROM p2_output_fg\n) AS combined LIMIT 200",
+    "summary": "Jumlah karton yang tercatat dalam data adalah 2.378. Kesimpulannya, total karton yang ada sebanyak 2.378 buah."
+  },
+  {
+    "question": "sebutkan jumlah karton untuk masing-masing kodeitem",
+    "sql": "SELECT kode_item, COUNT(DISTINCT idkarton) AS jumlah_karton\nFROM (\n    SELECT kode_item, idkarton FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton FROM p2_output_fg\n) AS combined\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Kode item BALADO memiliki 28 karton, BALADO DISPLAY 5 karton, BALADO LV 1 7 karton, BALADO LV 2 13 karton, BALADO PREMIUM 244 karton, BAWANG PUTIH 1 karton, BAWANG PUTIH 432 PCS 170 karton, CABE 174 karton, DISPLAY BALADO 6 karton, DISPLAY BALADO PREMIUM 23 karton, DISPLAY GULAI 11 karton, DISPLAY KARI 36 karton, DISPLAY KETUMBAR 16 karton, DISPLAY KUNYIT 10 karton, DISPLAY OPOR 30 karton, DISPLAY POUCH BAWANG PUTIH 13 karton, DISPLAY POUCH CABE 3 karton, DISPLAY POUCH KETUMBAR 19 karton, DISPLAY POUCH KUNYIT 10 karton, DISPLAY POUCH MARINASI 19 karton, DISPLAY SAMBAL GORENG 18 karton, GULAI 18 karton, GULAI DISPLAY 4 karton, KARI 90 karton, KARI DISPLAY 3 karton, KEMASAN BAWANG PUTIH 654 karton, KETUMBAR 941 karton, KUNYIT 761 karton, KUNYIT SIGLE ROLL 5 karton, KUNYIT SINGLE ROLL 8 karton, LADA 11 karton, LADA BANDED 9 karton, LADA_A 643 karton, LADA_B 616 karton, LODEH 2 karton, MARINASI 713 karton, OPOR 43 karton, OPOR DISPLAY 6 karton, POUCH BAWANG PUTIH 81 karton, POUCH BAWANG PUTIH 250 12 karton, POUCH CABE 24 karton, POUCH CABE 250 5 karton, POUCH KETUMBAR 48 karton, POUCH KETUMBAR 250 18 karton, POUCH KUNYIT 40 karton, POUCH KUNYIT 250 21 karton, POUCH MARINASI 115 karton, POUCH MARINASI 250 24 karton, SAMBAL GORENG 28 karton, serta satu entri tanpa kode item dengan 10 karton. Secara total terdapat 5 809 karton. Insight utama: produk dengan jumlah karton tertinggi adalah KETUMBAR (941 karton), diikuti KUNYIT (761 karton), MARINASI (713 karton), KEMASAN BAWANG PUTIH (654 karton) dan LADA_A (643 karton). Kesimpulan: mayoritas stok karton terkonsentrasi pada beberapa item utama, terutama KETUMBAR, KUNYIT, dan MARINASI."
+  },
+  {
+    "question": "Sebutkan semua kode item",
+    "sql": "SELECT DISTINCT kode_item FROM p1_output_fg\nUNION\nSELECT DISTINCT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Berikut semua nilai yang terdapat pada kolom kode_item (kecuali baris kosong): LADA, LADA_B, LADA_A, KUNYIT, LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250.  \n\nInsight utama: terdapat 49 kode item yang mencakup berbagai varian bumbu dan kemasan, dengan banyak nama mengandung kata kunci seperti “LADA”, “BALADO”, “KUNYIT”, serta prefiks “DISPLAY” atau “POUCH” yang menunjukkan tipe penyajian.  \n\nKesimpulan: total ada 49 kode item unik dalam data yang diberikan."
+  },
+  {
+    "question": "tampilkan tren produksi untuk minggu ini",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg\n) AS combined\nWHERE YEARWEEK(tgl_shift, 1) = YEARWEEK(CURDATE(), 1)\nGROUP BY tgl_shift\nORDER BY tgl_shift LIMIT 200",
+    "summary": "Tidak ada data yang bisa diringkas."
+  },
+  {
+    "question": "sebutkan semua produk yang telah ada",
+    "sql": "SELECT kode_item FROM p1_output_fg\nUNION\nSELECT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "Data berisi 49 kode produk unik (tidak menghitung nilai kosong). Produk‑produk tersebut antara lain: LADA, LADA_B, LADA_A, KUNYIT, LADA BANDED, KETUMBAR, BALADO, BALADO DISPLAY, SAMBAL GORENG DISPLAY, GULAI DISPLAY, KARI DISPLAY, OPOR DISPLAY, MARINASI, SAMBAL GORENG, LODEH, CABE, KARI, DISPLAY KETUMBAR, OPOR, GULAI, DISPLAY OPOR, DISPLAY KARI, BALADO LV 2, SEASONING, BAWANG PUTIH, DISPLAY SAMBAL GORENG, DISPLAY KUNYIT, BALADO LV 1, DISPLAY BALADO, TRIAL, POUCH MARINASI, POUCH KETUMBAR, POUCH KETUMBAR 250, KEMASAN BAWANG PUTIH, POUCH KUNYIT 250, DISPLAY GULAI, POUCH BAWANG PUTIH, POUCH CABE, POUCH CABE 250, BALADO PREMIUM, DISPLAY POUCH KETUMBAR, KUNYIT SIGLE ROLL, DISPLAY POUCH KUNYIT, DISPLAY POUCH MARINASI, KUNYIT SINGLE ROLL, DISPLAY POUCH BAWANG PUTIH, DISPLAY POUCH CABE, DISPLAY BALADO PREMIUM, POUCH MARINASI 250.  \nInsight utama: Inventori mencakup beragam varian bumbu dasar (seperti LADA, KUNYIT, BALADO) serta variasi kemasan (standar, display, pouch) dengan beberapa ukuran dan tingkat kemasan khusus.  \nKesimpulan: Terdapat 49 produk berbeda yang sudah tersedia, menandakan portofolio produk yang luas dan beragam."
+  },
+  {
+    "question": "bagaimana tren produksi bulan Januari 2026 pada p1_output_fg",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_produksi\nFROM p1_output_fg\nWHERE tgl_shift >= '2026-01-01' AND tgl_shift < '2026-02-01'\nGROUP BY tgl_shift\nORDER BY tgl_shift LIMIT 200",
+    "summary": "Selama bulan Januari 2026, produksi p1_output_fg berfluktuasi di kisaran 9.300 – 23.900 unit. Pada awal bulan nilai produksi tinggi (≈23.4 k pada 1 Jan) lalu turun drastis menjadi 10.9 k pada 2 Jan, setelah itu kembali stabil di sekitar 21‑22 k hingga pertengahan bulan. Pada 14 Jan terjadi penurunan signifikan (≈9.3 k), namun produksi kembali naik ke level 21‑22 k. Menjelang akhir bulan terjadi dua puncak produksi tertinggi (≈23.9 k pada 25‑26 Jan) diikuti penurunan moderat ke sekitar 20.6 k pada 31 Jan. Secara umum, tren produksi di bulan ini relatif stabil di sekitar 21 k dengan beberapa fluktuasi tajam, dan menunjukkan sedikit peningkatan pada akhir bulan. Kesimpulan: produksi Januari 2026 cenderung konsisten sekitar 21 k, dengan variasi yang dipengaruhi oleh beberapa hari produksi rendah dan puncak produksi akhir bulan."
+  },
+  {
+    "question": "Mesin mana yang offline saat ini?",
+    "sql": "SELECT DISTINCT User FROM p1_output_fg WHERE Status = 'offline' \nUNION \nSELECT DISTINCT User FROM p2_output_fg WHERE Status = 'offline' LIMIT 200",
+    "summary": "Tidak ada data yang bisa diringkas."
+  },
+  {
+    "question": "sebutkan semua produk yang tersedia",
+    "sql": "SELECT kode_item FROM p1_output_fg\nUNION\nSELECT kode_item FROM p2_output_fg\nLIMIT 200",
+    "summary": "SELECT kode_item FROM produk;"
+  },
+  {
+    "question": "tampilkan tren hasil produksi pada bulan Januari 2026",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg\n) AS combined\nWHERE tgl_shift >= '2026-01-01' AND tgl_shift < '2026-02-01'\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "tampilkan hanya produk lada_a",
+    "sql": "SELECT tgl_shift, kode_item, Berat, reject, total_inner, reject_inner, Waktu, Status\nFROM p1_output_fg\nWHERE kode_item = 'lada_a'\nUNION ALL\nSELECT tgl_shift, kode_item, Berat, reject1 AS reject, total_inner, reject_inner, Waktu, Status\nFROM p2_output_fg\nWHERE kode_item = 'lada_a' LIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "tampilkan tren hasil produksi pada bulan Januari 2026 dengan kode item lada b",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg WHERE kode_item = 'lada b'\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg WHERE kode_item = 'lada b'\n) AS combined\nWHERE tgl_shift >= '2026-01-01' AND tgl_shift < '2026-02-01'\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Tidak ada data yang bisa diringkas."
+  },
+  {
+    "question": "tampilkan tren hasil produksi pada bulan Januari 2026 dengan kode item lada_b",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg WHERE kode_item = 'lada_b'\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg WHERE kode_item = 'lada_b'\n) AS combined\nWHERE tgl_shift >= '2026-01-01' AND tgl_shift < '2026-02-01'\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Pertanyaan diluar konteks"
+  },
+  {
+    "question": "tampilkan tren hasil produksi pada bulan Januari 2026 dengan kode item lada_b",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg WHERE kode_item = 'lada_b'\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg WHERE kode_item = 'lada_b'\n) AS combined\nWHERE tgl_shift >= '2026-01-01' AND tgl_shift < '2026-02-01'\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Selama Januari 2026, produksi lada_b menunjukkan pola yang relatif stabil dengan nilai harian sebagian besar berada di atas 11.000 kg. Pada awal bulan (1‑7 Jan) total berat berada di kisaran 11.700‑12.100 kg, kemudian terjadi penurunan tajam pada 14 Jan (6.279 kg) yang kemungkinan disebabkan oleh gangguan operasional atau pemeliharaan. Setelah hari itu produksi kembali naik dan mempertahankan level antara 11.800‑12.300 kg hingga akhir bulan, dengan puncak pada 27 Jan (12.277 kg). Rata‑rata harian bulan ini diperkirakan sekitar 11.500 kg. Kesimpulannya, produksi lada_b di bulan Januari 2026 umumnya konsisten tinggi, kecuali satu penurunan signifikan di pertengahan bulan."
+  },
+  {
+    "question": "bandingkan produksi antara lada_a dengan lada_b pada bulan Januari 2026 saja",
+    "sql": "SELECT \n    tgl_shift,\n    SUM(CASE WHEN kode_item = 'lada_a' THEN Berat ELSE 0 END) AS total_berat_lada_a,\n    SUM(CASE WHEN kode_item = 'lada_b' THEN Berat ELSE 0 END) AS total_berat_lada_b\nFROM (\n    SELECT tgl_shift, kode_item, Berat FROM p1_output_fg\n    UNION ALL\n    SELECT tgl_shift, kode_item, Berat FROM p2_output_fg\n) AS combined\nWHERE tgl_shift >= '2026-01-01' \n  AND tgl_shift < '2026-02-01'\n  AND kode_item IN ('lada_a','lada_b')\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Selama bulan Januari 2026, total produksi lada b (≈ 358.000 kg) hampir dua kali lipat total produksi lada a (≈ 184.000 kg). Rata‑rata harian lada b (≈ 11.550 kg) juga jauh lebih tinggi dibandingkan rata‑rata lada a (≈ 5.940 kg), selisih sekitar 5.600 kg per hari. Pada hampir semua tanggal produksi lada b berada di atas 11.000 kg, sedangkan lada a biasanya berada di kisaran 5.800–6.100 kg, dengan satu penurunan tajam pada 14 Januari (1.719 kg untuk lada a dan 6.279 kg untuk lada b). Secara keseluruhan, produksi lada b secara konsisten lebih tinggi, menunjukkan kinerja produksi hampir dua kali lipat dibandingkan lada a selama bulan tersebut. Kesimpulan: lada b menghasilkan jauh lebih banyak daripada lada a pada Januari 2026."
+  },
+  {
+    "question": "bandingkan dengan satuan jumlah karton",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_karton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('LADA_A','LADA_B')\n  AND YEAR(tgl_shift) = 2026\n  AND MONTH(tgl_shift) = 1\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "LADA_B menghasilkan total 98 karton, sedangkan LADA_A menghasilkan 93 karton. Jadi LADA_B memiliki jumlah karton lebih tinggi 5 karton dibanding LADA_A, atau kira‑kira 5,4 % lebih banyak. Kesimpulannya, performa LADA_B dalam satuan karton lebih baik daripada LADA_A."
+  },
+  {
+    "question": "bandingkan hasil karton produksi antara lada_a dengan lada_b pada bulan Januari 2026 saja, jumlah karton terletak pada kolom idkarton",
+    "sql": "SELECT \n    kode_item,\n    COUNT(idkarton) AS total_karton\nFROM (\n    SELECT kode_item, idkarton, tgl_shift FROM p1_output_fg\n    UNION ALL\n    SELECT kode_item, idkarton, tgl_shift FROM p2_output_fg\n) AS combined\nWHERE kode_item IN ('lada_a','lada_b')\n  AND tgl_shift >= '2026-01-01' \n  AND tgl_shift < '2026-02-01'\nGROUP BY kode_item\nORDER BY kode_item\nLIMIT 200",
+    "summary": "Pada Januari 2026, produksi karton lada_b lebih tinggi dibandingkan lada_a. Lada_a menghasilkan 93 karton, sedangkan lada_b menghasilkan 98 karton, selisihnya 5 karton. Kesimpulan: lada_b mencatat produksi karton yang sedikit lebih baik daripada lada_a pada bulan tersebut."
+  },
+  {
+    "question": "tampilan tren produksi minggu ini",
+    "sql": "SELECT tgl_shift, SUM(Berat) AS total_berat\nFROM (\n    SELECT tgl_shift, Berat FROM p1_output_fg\n    UNION ALL\n    SELECT tgl_shift, Berat FROM p2_output_fg\n) AS combined\nWHERE YEARWEEK(tgl_shift, 1) = YEARWEEK(CURDATE(), 1)\nGROUP BY tgl_shift\nORDER BY tgl_shift\nLIMIT 200",
+    "summary": "Tidak ada data yang bisa diringkas."
+  }
+]

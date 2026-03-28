@@ -122,6 +122,22 @@ return [
             'username' => env('DB_USERNAME_HORMANN'),
             'password' => env('DB_PASSWORD_HORMANN'),
         ],
+        'p1_packing_machine' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_PRODUCTION'),
+            'port' => env('DB_PORT'),
+            'database' => env('DB_P1_PACK_MACHINE'),
+            'username' => env('DB_USERNAME_PRODUCTION'),
+            'password' => env('DB_PASSWORD_PRODUCTION'),
+        ],
+        'p2_packing_machine' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_PRODUCTION'),
+            'port' => env('DB_PORT'),
+            'database' => env('DB_P2_PACK_MACHINE'),
+            'username' => env('DB_USERNAME_PRODUCTION'),
+            'password' => env('DB_PASSWORD_PRODUCTION'),
+        ],
 
     ],
 

@@ -11,7 +11,7 @@ function loadData() {
         let rows = "";
         // console.log(data);
 
-        data.forEach(function (item) {
+        data.forEach(function (item, index) {
             if (item.status_mesin == 1) {
                 get_waktu = `${item.waktu} (Last Off)`;
                 statusClass = "bg-gradient-success"
@@ -24,15 +24,12 @@ function loadData() {
                 get_state = `Machine Off`;
             }
 
-            // if (item.status_mesin == 1) {
-            // } else {
-            // }
-
             rows += `
             <tr class="text-center">
+                <td>${index + 1}</td>
                 <td class="align-middle text-center text-sm"><span class="badge badge-sm ${statusClass}">${state}</span></td>
-                <td>${item.mesin_angka}</td>                
-                <td>${get_waktu}</td>  
+                <td>${item.mesin_angka}</td>
+                <td>${get_waktu}</td>
                 <td>-</td>
                 <td>${get_state}</td>
             </tr>

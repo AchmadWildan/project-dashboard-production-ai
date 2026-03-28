@@ -1,0 +1,26 @@
+{
+  "_readme": "Edit file ini untuk menambahkan deskripsi domain tabel dan kolom. AI akan membaca ini saat menjawab pertanyaan.",
+  "tables": {
+    "p1_output_fg": "Data hasil produksi finish good Plant 1 (Packing Unit 1) per shift harian",
+    "p2_output_fg": "Data hasil produksi finish good Plant 2 (Packing Unit 2) per shift harian",
+    "p1_livecounter": "Data live status dan counter mesin real-time di Plant 1",
+    "p2_livecounter": "Data live status dan counter mesin real-time di Plant 2",
+    "ip_mesin": "Daftar IP address mesin di Plant 1 beserta kode mesin",
+    "ip_timbangan": "Daftar IP address timbangan di Plant 1 dan Plant 2"
+  },
+  "columns": {
+    "idkarton": "Jumlah karton yang diproduksi (satuan: karton)",
+    "Berat": "Berat total produksi dalam kilogram (kg)",
+    "tgl_shift": "Tanggal dan shift produksi (format: YYYY-MM-DD atau DATETIME)",
+    "kode_item": "Kode produk / item yang diproduksi (contoh: lada_a, lada_b)",
+    "kode_mesin": "Kode identifikasi mesin produksi",
+    "status_mesin": "Status mesin saat ini: ON, OFF, atau Loss Connection",
+    "shift": "Nomor shift produksi (1, 2, atau 3)",
+    "mesin": "Nama atau kode mesin",
+    "aktif": "Flag apakah mesin aktif digunakan (1=aktif, 0=nonaktif)",
+    "ip": "Alamat IP perangkat dalam jaringan",
+    "device": "Nama perangkat jaringan",
+    "updated_at": "Waktu terakhir data diperbarui",
+    "created_at": "Waktu data pertama kali dibuat"
+  }
+}

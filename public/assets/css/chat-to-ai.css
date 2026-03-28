@@ -1,0 +1,4 @@
+/* Styles for typing animation — used by chat-to-ai.js */
+/* Remaining styles are inlined in chatbot-sql-to-ai.blade.php */
+
+.animate__animated { animation-duration: 0.4s; }

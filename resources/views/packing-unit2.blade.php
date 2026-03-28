@@ -4,20 +4,20 @@
 
 <style>
   /* =============================================
-     PACKING UNIT 1 – Premium Dashboard Styles
+     PACKING UNIT 2 – Premium Dashboard Styles
      ============================================= */
-  .pu1 {
-    --pu1-online:  #10b981;
-    --pu1-offline: #ef4444;
-    --pu1-retire:  #f59e0b;
-    --pu1-total:   #6366f1;
-    --pu1-grad-start: #06b6d4;
-    --pu1-grad-end:   #a855f7;
+  .pu2 {
+    --pu2-online:  #10b981;
+    --pu2-offline: #ef4444;
+    --pu2-retire:  #f59e0b;
+    --pu2-total:   #6366f1;
+    --pu2-grad-start: #0ea5e9;
+    --pu2-grad-end:   #6366f1;
   }
 
   /* ---------- Page header ---------- */
-  .pu1-page-header {
-    background: linear-gradient(135deg, var(--pu1-grad-start) 0%, var(--pu1-grad-end) 100%);
+  .pu2-page-header {
+    background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
     border-radius: 20px;
     padding: 1.5rem 2rem;
     margin-bottom: 1.75rem;
@@ -25,7 +25,7 @@
     overflow: hidden;
     box-shadow: 0 12px 32px rgba(168, 85, 247, .3);
   }
-  .pu1-page-header::before {
+  .pu2-page-header::before {
     content: '';
     position: absolute;
     top: -40px; right: -40px;
@@ -33,7 +33,7 @@
     border-radius: 50%;
     background: rgba(255,255,255,.08);
   }
-  .pu1-page-header::after {
+  .pu2-page-header::after {
     content: '';
     position: absolute;
     bottom: -60px; left: 20%;
@@ -41,19 +41,19 @@
     border-radius: 50%;
     background: rgba(255,255,255,.05);
   }
-  .pu1-page-header .header-title {
+  .pu2-page-header .header-title {
     font-size: 1.35rem;
     font-weight: 700;
     color: #fff;
     margin: 0;
     letter-spacing: .3px;
   }
-  .pu1-page-header .header-subtitle {
+  .pu2-page-header .header-subtitle {
     font-size: .825rem;
     color: rgba(255,255,255,.75);
     margin: .25rem 0 0;
   }
-  .pu1-live-badge {
+  .pu2-live-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -66,40 +66,40 @@
     color: #fff;
     letter-spacing: .4px;
   }
-  .pu1-live-badge .dot {
+  .pu2-live-badge .dot {
     width: 7px; height: 7px;
     border-radius: 50%;
     background: #4ade80;
     box-shadow: 0 0 0 0 rgba(74, 222, 128, .6);
-    animation: pu1-pulse 1.6s infinite;
+    animation: pu2-pulse 1.6s infinite;
   }
-  @keyframes pu1-pulse {
+  @keyframes pu2-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, .6); }
     70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
     100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
   }
-  .pu1-last-update {
+  .pu2-last-update {
     font-size: .7rem;
     color: rgba(255,255,255,.65);
     margin-top: .4rem;
   }
 
   /* ---------- Stat Cards ---------- */
-  .pu1 .stat-card {
+  .pu2 .stat-card {
     border: none;
     border-radius: 18px;
     box-shadow: 0 8px 24px rgba(0,0,0,.07);
     transition: transform .22s ease, box-shadow .22s ease;
     overflow: hidden;
   }
-  .pu1 .stat-card:hover {
+  .pu2 .stat-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 18px 36px rgba(0,0,0,.11);
   }
-  .pu1 .stat-card .card-body {
+  .pu2 .stat-card .card-body {
     padding: 1.2rem 1.4rem !important;
   }
-  .pu1 .stat-card .stat-label {
+  .pu2 .stat-card .stat-label {
     font-size: .72rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -107,18 +107,18 @@
     color: #94a3b8;
     margin-bottom: .3rem;
   }
-  .pu1 .stat-card .stat-value {
+  .pu2 .stat-card .stat-value {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
     margin: 0;
   }
-  .pu1 .stat-card .stat-sub {
+  .pu2 .stat-card .stat-sub {
     font-size: .72rem;
     color: #94a3b8;
     margin-top: .35rem;
   }
-  .pu1 .stat-icon {
+  .pu2 .stat-icon {
     width: 54px; height: 54px;
     border-radius: 14px;
     display: inline-flex;
@@ -128,62 +128,62 @@
     color: #fff;
     flex-shrink: 0;
   }
-  .pu1 .stat-icon.online  { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 6px 18px rgba(16,185,129,.35); }
-  .pu1 .stat-icon.offline { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 6px 18px rgba(239,68,68,.35); }
-  .pu1 .stat-icon.retire  { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 6px 18px rgba(245,158,11,.35); }
-  .pu1 .stat-icon.total   { background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 6px 18px rgba(168,85,247,.35); }
+  .pu2 .stat-icon.online  { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 6px 18px rgba(16,185,129,.35); }
+  .pu2 .stat-icon.offline { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 6px 18px rgba(239,68,68,.35); }
+  .pu2 .stat-icon.retire  { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 6px 18px rgba(245,158,11,.35); }
+  .pu2 .stat-icon.total   { background: linear-gradient(135deg, #6366f1, #4f46e5); box-shadow: 0 6px 18px rgba(99,102,241,.35); }
 
-  .pu1 .stat-value.online  { color: var(--pu1-online); }
-  .pu1 .stat-value.offline { color: var(--pu1-offline); }
-  .pu1 .stat-value.retire  { color: var(--pu1-retire); }
-  .pu1 .stat-value.total   { color: var(--pu1-total); }
+  .pu2 .stat-value.online  { color: var(--pu2-online); }
+  .pu2 .stat-value.offline { color: var(--pu2-offline); }
+  .pu2 .stat-value.retire  { color: var(--pu2-retire); }
+  .pu2 .stat-value.total   { color: var(--pu2-total); }
 
   /* ---------- Progress bar on stat cards ---------- */
-  .pu1 .stat-progress {
+  .pu2 .stat-progress {
     height: 4px;
     border-radius: 999px;
     background: #f1f5f9;
     margin-top: .85rem;
     overflow: hidden;
   }
-  .pu1 .stat-progress-bar {
+  .pu2 .stat-progress-bar {
     height: 100%;
     border-radius: 999px;
     transition: width .8s ease;
   }
 
   /* ---------- Table Card ---------- */
-  .pu1 .table-card {
+  .pu2 .table-card {
     border: none;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,.07);
     overflow: hidden;
   }
-  .pu1 .table-card .card-header {
+  .pu2 .table-card .card-header {
     background: #fff;
     border-bottom: 1px solid #f1f5f9;
     padding: 1.25rem 1.5rem;
   }
-  .pu1 .table-card-title {
+  .pu2 .table-card-title {
     font-size: 1rem;
     font-weight: 700;
     color: #1e293b;
     margin: 0;
   }
-  .pu1 .table-card-subtitle {
+  .pu2 .table-card-subtitle {
     font-size: .76rem;
     color: #94a3b8;
     margin: .15rem 0 0;
   }
 
   /* ---------- Modern Table ---------- */
-  .pu1 .table-modern {
+  .pu2 .table-modern {
     margin: 0;
   }
-  .pu1 .table-modern thead tr {
+  .pu2 .table-modern thead tr {
     background: #f8fafc;
   }
-  .pu1 .table-modern thead th {
+  .pu2 .table-modern thead th {
     font-size: .7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -193,21 +193,21 @@
     border: none;
     white-space: nowrap;
   }
-  .pu1 .table-modern tbody td {
+  .pu2 .table-modern tbody td {
     padding: .85rem 1rem;
     vertical-align: middle;
     border-bottom: 1px solid #f1f5f9;
     font-size: .85rem;
     color: #475569;
   }
-  .pu1 .table-modern tbody tr:last-child td { border-bottom: none; }
-  .pu1 .table-modern tbody tr {
+  .pu2 .table-modern tbody tr:last-child td { border-bottom: none; }
+  .pu2 .table-modern tbody tr {
     transition: background .15s ease;
   }
-  .pu1 .table-modern tbody tr:hover td { background: #f8fafc; }
+  .pu2 .table-modern tbody tr:hover td { background: #f8fafc; }
 
   /* ---------- Status Badges ---------- */
-  .pu1-badge {
+  .pu2-badge {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -217,23 +217,23 @@
     font-weight: 600;
     letter-spacing: .3px;
   }
-  .pu1-badge.online  { background: rgba(16,185,129,.12);  color: #059669; }
-  .pu1-badge.offline { background: rgba(239,68,68,.12);   color: #dc2626; }
-  .pu1-badge.retire  { background: rgba(245,158,11,.12);  color: #d97706; }
-  .pu1-badge .badge-dot {
+  .pu2-badge.online  { background: rgba(16,185,129,.12);  color: #059669; }
+  .pu2-badge.offline { background: rgba(239,68,68,.12);   color: #dc2626; }
+  .pu2-badge.retire  { background: rgba(245,158,11,.12);  color: #d97706; }
+  .pu2-badge .badge-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: currentColor;
   }
-  .pu1-badge.online .badge-dot { animation: pu1-pulse 1.6s infinite; box-shadow: none; }
+  .pu2-badge.online .badge-dot { animation: pu2-pulse 1.6s infinite; box-shadow: none; }
 
   /* ---------- Toolbar ---------- */
-  .pu1-toolbar {
+  .pu2-toolbar {
     display: flex;
     align-items: center;
     gap: .5rem;
   }
-  .pu1-btn-icon {
+  .pu2-btn-icon {
     width: 34px; height: 34px;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
@@ -247,12 +247,12 @@
     cursor: pointer;
     text-decoration: none;
   }
-  .pu1-btn-icon:hover {
+  .pu2-btn-icon:hover {
     background: #f1f5f9;
     border-color: #cbd5e1;
     color: #334155;
   }
-  #pu1-search {
+  #pu2-search {
     border: 1px solid #e2e8f0;
     border-radius: 10px;
     padding: .35rem .85rem .35rem 2.1rem;
@@ -263,14 +263,14 @@
     width: 180px;
     transition: border-color .2s, box-shadow .2s;
   }
-  #pu1-search:focus {
-    border-color: #a855f7;
-    box-shadow: 0 0 0 3px rgba(168,85,247,.12);
+  #pu2-search:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.12);
   }
-  .pu1-search-wrap {
+  .pu2-search-wrap {
     position: relative;
   }
-  .pu1-search-wrap i {
+  .pu2-search-wrap i {
     position: absolute;
     left: .7rem; top: 50%;
     transform: translateY(-50%);
@@ -280,26 +280,26 @@
   }
 
   /* ---------- Empty state ---------- */
-  .pu1-empty {
+  .pu2-empty {
     text-align: center;
     padding: 3rem 1rem;
     color: #94a3b8;
   }
-  .pu1-empty i { font-size: 2.5rem; margin-bottom: .75rem; display: block; }
-  .pu1-empty p { font-size: .85rem; margin: 0; }
+  .pu2-empty i { font-size: 2.5rem; margin-bottom: .75rem; display: block; }
+  .pu2-empty p { font-size: .85rem; margin: 0; }
 </style>
 
-<div class="pu1">
+<div class="pu2">
 
   {{-- ══════════ Page Header ══════════ --}}
-  <div class="pu1-page-header d-flex align-items-center justify-content-between flex-wrap gap-3">
+  <div class="pu2-page-header d-flex align-items-center justify-content-between flex-wrap gap-3">
     <div>
-      <p class="header-title">🏭 Packing Unit 1 — Machine Monitor</p>
-      <p class="header-subtitle mb-0">Real-time status monitoring for all machines in Production Unit 1</p>
-      <p class="pu1-last-update mb-0" id="pu1LastUpdate">Last updated: —</p>
+      <p class="header-title">🏭 Packing Unit 2 — Machine Monitor</p>
+      <p class="header-subtitle mb-0">Real-time status monitoring for all machines in Production Unit 2</p>
+      <p class="pu2-last-update mb-0" id="pu2LastUpdate">Last updated: —</p>
     </div>
     <div class="text-end">
-      <span class="pu1-live-badge">
+      <span class="pu2-live-badge">
         <span class="dot"></span> LIVE
       </span>
     </div>
@@ -379,14 +379,14 @@
             <div>
               <p class="stat-label mb-1">Total Machine</p>
               <h4 class="stat-value total mb-0" id="totalMachine">—</h4>
-              <p class="stat-sub">registered in Unit 1</p>
+              <p class="stat-sub">registered in Unit 2</p>
             </div>
             <div class="stat-icon total">
               <i class="ni ni-tv-2"></i>
             </div>
           </div>
           <div class="stat-progress">
-            <div class="stat-progress-bar" id="totalBar" style="width:100%; background: linear-gradient(90deg,#a855f7,#c084fc)"></div>
+            <div class="stat-progress-bar" id="totalBar" style="width:100%; background: linear-gradient(90deg,#6366f1,#818cf8)"></div>
           </div>
         </div>
       </div>
@@ -404,17 +404,17 @@
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div>
               <h6 class="table-card-title">
-                <i class="ni ni-bullet-list-67 me-2" style="color:#a855f7"></i>
-                List Machine — P1
+                <i class="ni ni-bullet-list-67 me-2" style="color:#6366f1"></i>
+                List Machine — P2
               </h6>
-              <p class="table-card-subtitle">All machines registered to Packing Unit 1</p>
+              <p class="table-card-subtitle">All machines registered to Packing Unit 2</p>
             </div>
-            <div class="pu1-toolbar">
-              <div class="pu1-search-wrap">
+            <div class="pu2-toolbar">
+              <div class="pu2-search-wrap">
                 <i class="fa fa-search"></i>
-                <input type="text" id="pu1-search" placeholder="Search machine…">
+                <input type="text" id="pu2-search" placeholder="Search machine…">
               </div>
-              <a class="pu1-btn-icon" title="Refresh" onclick="location.reload()">
+              <a class="pu2-btn-icon" title="Refresh" onclick="location.reload()">
                 <i class="fa fa-refresh"></i>
               </a>
             </div>
@@ -436,7 +436,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{-- Populated by packing-unit1.js --}}
+                {{-- Populated by packing-unit2.js --}}
               </tbody>
             </table>
           </div>
@@ -446,11 +446,11 @@
     </div>
   </div>
 
-</div>{{-- /pu1 --}}
+</div>{{-- /pu2 --}}
 
 {{-- Update progress bars whenever the counters change --}}
 <script>
-  function pu1UpdateBars() {
+  function pu2UpdateBars() {
     const total   = parseInt(document.getElementById('totalMachine').textContent)   || 0;
     const online  = parseInt(document.getElementById('onlineMachine').textContent)  || 0;
     const offline = parseInt(document.getElementById('offlineMachine').textContent) || 0;
@@ -461,7 +461,7 @@
     document.getElementById('retireBar').style.width  = (retire  / total * 100) + '%';
     // Timestamp
     const now = new Date();
-    document.getElementById('pu1LastUpdate').textContent =
+    document.getElementById('pu2LastUpdate').textContent =
       'Last updated: ' + now.toLocaleDateString('id-ID') + ' ' + now.toLocaleTimeString('id-ID');
   }
 
@@ -469,13 +469,13 @@
   ['onlineMachine','offlineMachine','retireMachine','totalMachine'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) {
-      new MutationObserver(pu1UpdateBars).observe(el, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(pu2UpdateBars).observe(el, { childList: true, subtree: true, characterData: true });
     }
   });
 
   // Client-side search filter
   document.addEventListener('DOMContentLoaded', function() {
-    var searchBox = document.getElementById('pu1-search');
+    var searchBox = document.getElementById('pu2-search');
     if (searchBox) {
       searchBox.addEventListener('input', function() {
         var q = this.value.toLowerCase();
@@ -490,5 +490,5 @@
 @endsection
 
 @push('dashboard')
-<script src="{{ asset('js/packing-unit1.js') }}"></script>
+<script src="{{ asset('js/packing-unit2.js') }}"></script>
 @endpush
